@@ -1,7 +1,8 @@
 #
 # Build stage
 #
-FROM maven:3.9-eclipse-temurin-21-jammy as build
+# FROM maven:3.9-eclipse-temurin-21-jammy as build
+FROM eclipse-temurin:21-jre-jammy 
 ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
