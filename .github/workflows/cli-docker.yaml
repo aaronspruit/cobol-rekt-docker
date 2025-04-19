@@ -18,17 +18,16 @@ jobs:
       id-token: write
       #
     steps:
-      - name: Checkout tools repo
-        uses: actions/checkout@v4
-        with:
-          repository: avishek-sen-gupta/cobol-rekt
-      
+     
       - name: Checkout docker repo
         uses: actions/checkout@v4
         with: 
           path: main
       
-
+      - name: Checkout tools repo
+        uses: actions/checkout@v4
+        with:
+          repository: aaronspruit/cobol-rekt
         
       - run: |
           git submodule update --init --recursive
