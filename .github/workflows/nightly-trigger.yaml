@@ -1,4 +1,4 @@
-name: trigger
+name: nightly-trigger
 
 on:
   workflow_dispatch:

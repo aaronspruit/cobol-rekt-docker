@@ -1,11 +1,13 @@
 name: Docker Image CI
 
 on:
-  workflow_dispatch:
   workflow_run:
     workflows: ["nightly-trigger"]
-    types:
-      - completed
+    types: [completed]
+    # This workflow is triggered by the completion of the nightly-trigger workflow.
+    # It will only run if the nightly-trigger workflow was successful.
+
+  workflow_dispatch:
 
 env:
   REGISTRY: ghcr.io
