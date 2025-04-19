@@ -15,4 +15,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - run: ./workflow-trigger.sh
+      - name: Make the script files executable
+        run: chmod +x workflow-trigger.sh
+      - name: Run the scripts
+        run: |
+          ./workflow-trigger.sh
