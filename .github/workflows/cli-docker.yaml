@@ -2,6 +2,10 @@ name: Docker Image CI
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["nightly-trigger"]
+    types:
+      - completed
 
 env:
   REGISTRY: ghcr.io
