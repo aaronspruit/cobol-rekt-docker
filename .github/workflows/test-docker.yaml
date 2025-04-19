@@ -22,7 +22,7 @@ jobs:
       - name: Checkout docker repo
         uses: actions/checkout@v4
         with: 
-          path: main
+          path: docker-repo
       
       - name: Checkout tools repo
         uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: test.dockerfile
+          file: docker-repo/test.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
