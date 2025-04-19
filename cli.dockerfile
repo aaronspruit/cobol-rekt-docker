@@ -19,4 +19,4 @@ ADD . $HOME
 # COPY --from=build /usr/app/che-che4z-lsp-for-cobol-integration/server/dialect-idms/target/*.jar /app/dialect-idms.jar
 # COPY --from=build /usr/app/scripts/runZref.sh /app/scripts/runZref.sh
 # COPY --from=build /usr/app/smojol-python/* /app/python/
-CMD ["bash"]
+ENTRYPOINT ["bash"]
