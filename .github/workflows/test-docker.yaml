@@ -1,4 +1,4 @@
-name: CLI Docker Image CI
+name: TEST Docker Image CI
 
 on:
   workflow_dispatch:
