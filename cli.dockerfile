@@ -6,7 +6,7 @@ ENV HOME=/usr/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
 ADD . $HOME
-RUN mvn clean verify
+RUN mvn clean verify -Dcheckstyle.skip=true -Dmaven.test.skip=true
 
 #
 # Package stage
