@@ -25,15 +25,16 @@ jobs:
       #
     steps:
      
-      - name: Checkout docker repo
-        uses: actions/checkout@v4
-        with: 
-          path: main
-      
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: aaronspruit/cobol-rekt
+          repository: avishek-sen-gupta/cobol-rekt
+          submodules: true
+
+      - name: Checkout docker repo
+        uses: actions/checkout@v4
+        with: 
+          path: docker-repo
         
       - run: |
           git submodule update --init --recursive
@@ -63,7 +64,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: cli.dockerfile
+          file: docker-repo/cli.dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
