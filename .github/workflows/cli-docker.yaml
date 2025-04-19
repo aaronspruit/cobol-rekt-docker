@@ -45,7 +45,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/cli
           flavor: |
-            latest=auto
+            latest=true
           tags: |
             type=sha
             type=schedule,pattern={{date 'YYYYMMDD-hhmmss' tz='America/Los_Angeles'}}
