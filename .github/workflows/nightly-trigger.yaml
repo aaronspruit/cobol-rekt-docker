@@ -3,7 +3,7 @@ name: nightly-trigger
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '02 14 * * *'
+    - cron:  '02 08 * * *'
 
 
 jobs:
