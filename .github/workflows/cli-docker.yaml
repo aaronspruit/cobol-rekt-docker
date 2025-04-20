@@ -5,7 +5,6 @@ on:
     workflows: ["nightly-trigger"]
     types: [completed]
     # This workflow is triggered by the completion of the nightly-trigger workflow.
-    # It will only run if the nightly-trigger workflow was successful.
 
   workflow_dispatch:
 
@@ -14,7 +13,12 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-push-image:
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
+  on-success:
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
