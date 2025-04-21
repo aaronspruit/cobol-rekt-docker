@@ -5,10 +5,10 @@
 
 set -e
 
-# export NEO4J_URI='neo4j://localhost:7687'
-# export NEO4J_DATABASE='neo4j'
-# export NEO4J_USERNAME='neo4j'
-# export NEO4J_PASSWORD=''
+export NEO4J_URI='neo4j://192.168.1.189:7687'
+export NEO4J_DATABASE='neo4j'
+export NEO4J_USERNAME='neo4j'
+export NEO4J_PASSWORD=''
 
 myArray=("ACINSTAL" "CPBLBTCH" "EXTADDR1" "MSTQUI01" "TCFR0001" "TOBL0001" "TOINBTCH" "TSFR0001"
 "ACUI0001" "CPF1BTCH" "EXTCACCT" "MWBL0001" "TCUI0001" "TOBLBTCH" "TOUI0001" "TSINBTCH"
@@ -25,19 +25,17 @@ myArray=("ACINSTAL" "CPBLBTCH" "EXTADDR1" "MSTQUI01" "TCFR0001" "TOBL0001" "TOIN
 "BVUI0001" "DMFR0001" "MRGTRRPT" "SDUI0001" "TLINBTCH" "TOFR0005" "TSBLBTCH" "TUUI0001"
 "CPBL0001" "DMUI0001" "MSTQQI01" "TCBL0001" "TLUI0001" "TOFR0006" "TSF1BTCH")
 
-# "MSTQUI01.CBL" "TCFR0001.CBL" "TOBL0001.CBL" "TOINBTCH.COB" "TSFR0001.CBL" "ACUI0001.CBL" "CPF1BTCH.COB" "EXTCACCT.COB" "MWBL0001.CBL" "TCUI0001.CBL" "TOBLBTCH.COB" "TOUI0001.CBL" "TSINBTCH.COB" "AUDTRAIL.CBL" "CPF2BTCH.COB" "EXTCUST1.COB" "MWBLBTCH.COB" "TLBL0001.CBL" "TOF1BTCH.COB" "TRBL0001.CBL" "TSUI0001.CBL")
-
 FAILED_FILES=()
 
 for str in ${myArray[@]}
 do
-  if ! sudo java -jar /app/cli.jar run $str \
+  if ! java -jar /app/cli.jar run $str \
     --commands="FLOW_TO_GRAPHML WRITE_FLOW_AST WRITE_CFG FLOW_TO_GRAPHML WRITE_FLOW_AST WRITE_CFG WRITE_DATA_STRUCTURES EXPORT_MERMAID FLOW_TO_NEO4J BUILD_PROGRAM_DEPENDENCIES" \
     --srcDir "/source" \
-    --copyBooksDir "/copybooks/SRC_IBMz/CPY_BMS/,/copybooks/SRC_IBMz/CPY/,/copybooks/SRC_IBMz/CPY_SYS/,/copybooks/SRC_IBMz/CPY_SQL/,/copybooks/SRC_IBMz/CPY_DB2/" \
+    --copyBooksDir "/copybooks" \
     --dialectJarPath "/app/dialect-idms.jar" \
     --dialect COBOL \
-    --reportDir /output \
+    --reportDir "/output" \
     --generation=PARAGRAPH
   then
     echo "Failed on $str"
