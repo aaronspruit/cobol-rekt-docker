@@ -5,6 +5,9 @@ on:
     workflows: ["nightly-trigger"]
     types: [completed]
     # This workflow is triggered by the completion of the nightly-trigger workflow.
+  push:
+    branches:
+      - 'main'
 
   workflow_dispatch:
 
