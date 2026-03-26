@@ -33,13 +33,13 @@ jobs:
     steps:
      
       - name: Checkout tools repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: avishek-sen-gupta/cobol-rekt
           submodules: true
 
       - name: Checkout docker repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with: 
           path: docker-repo
         
